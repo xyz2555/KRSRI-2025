@@ -1,0 +1,9 @@
+derajat bertambah
+bergerak counter clockwise
+
+derajat berkurang
+bergerak clockwise
+
+
+konfigurasi di kanan q2 = 159.08 dengan bergerak ke 12, 14
+konfigurasi di kanan q2 = 180.00 dengan bergerak ke 08, 14
