@@ -4,8 +4,8 @@ Adafruit_PWMServoDriver board1 = Adafruit_PWMServoDriver(0x40);
 #define SERVOMIN  125                                                 // this is the 'minimum' pulse length count (out of 4096)
 #define SERVOMAX  625   
 
-int a1 = 8;
-int a2 = 14;
+double a1 = 8;
+double a2 = 14.5;
 
 const int servo1Offset = 90;  // Offset to align with 0 degrees
 const int servo2Offset = 90;  // Offset to align with 0 degrees
@@ -58,7 +58,7 @@ JointAngles inverseKinematics(Point target) {
   
   angles.theta1 = q0;
   angles.theta2 = constrain(q1 + servo1Offset, servo1Min, servo1Max);
-  angles.theta3 = constrain(reverse + servo2Offset, servo2Min, servo2Max);
+  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);
 //  angles.theta2 = q1;
 //  angles.theta3 = q2;
 
@@ -93,7 +93,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Point targetPoint = {0, 8, 14};
+  Point targetPoint = {0, 7, 7.75};
 
   JointAngles angles = inverseKinematics(targetPoint);
 
