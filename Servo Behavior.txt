@@ -7,3 +7,15 @@ bergerak clockwise
 
 konfigurasi di kanan q2 = 159.08 dengan bergerak ke 12, 14
 konfigurasi di kanan q2 = 180.00 dengan bergerak ke 08, 14
+
+
+idle tinggi 
+q1 = 35.05
+q2 = 44.60
+
+
+idle tinggi enak
+q1 = 43.05
+q2 = 44.60
+y = 5.853531763034923
+z = 8.648622196577978

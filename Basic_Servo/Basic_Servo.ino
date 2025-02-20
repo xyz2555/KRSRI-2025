@@ -52,7 +52,6 @@ JointAngles inverseKinematics(Point target) {
   double beta = atan2(a2_sin_q2, (a1 + a2_cos_q2)) * (180 / PI);
   double gamma = atan2(target.z, target.y) * (180 / PI);
   double q1 = gamma - beta;
-//  double q1 = gamma + beta;
 
   double reverse = abs(servo2Offset - q2);
   
@@ -71,7 +70,7 @@ void moveServoSmooth(JointAngles angles) {
   while (moving) {
     board1.setPWM(0,0, angleToPulse(angles.theta1));
     board1.setPWM(1,0, angleToPulse(angles.theta2));
-    board1.setPWM(2,0, angleToPulse(angles.theta3));
+    board1.setPWM(15,0, angleToPulse(angles.theta3));
     moving = false;
   }
 }
@@ -93,7 +92,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Point targetPoint = {0, 7, 7.75};
+  Point targetPoint = {0, 5.853531763034923, 8.648622196577978};
 
   JointAngles angles = inverseKinematics(targetPoint);
 
