@@ -1,0 +1,30 @@
+      ↑ (Front)
+       ┌───┐
+  (1)──┤   ├──(2)
+       │   │
+  (3)──┤   ├──(4)
+       └───┘
+
+Trot gait
+kaki yang bersilangan bergerak bersama sama
+kaki 1 dan 4 (pasangan 1)
+kaki 2 dan 3 (pasangan 2)
+
+sekuensial:
+pasangan 1 bergerak terlebih dahulu 
+pasangan 1 sampai pada sudah maju atau sampai titik depan
+pasangan 2 bergerak maju atau ke titik depan dengan pasangan 1 sambil menarik ke belakang
+jika pasangan 1 sudah mentok ke belakang
+pasangan 1 kembali lagi maju atau ke titik depan dengan pasangan 2 sambil menarik ke belakang
+looping()
+
+contoh:
+https://youtu.be/tNnhsi84IWc?si=DD7Its6JJUvL56bb
+
+
+Creeping gait
+Kaki begerak bergantian
+kaki 1 > kaki 4 > kaki 2 > kaki 3
+
+contoh:
+https://youtu.be/a3lh4KfODm0?si=I2muqCsC4gfluCPh
