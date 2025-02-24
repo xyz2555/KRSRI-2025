@@ -1,0 +1,20 @@
+running develop
+running egg_info
+writing sambergeni_controller.egg-info/PKG-INFO
+writing dependency_links to sambergeni_controller.egg-info/dependency_links.txt
+writing entry points to sambergeni_controller.egg-info/entry_points.txt
+writing requirements to sambergeni_controller.egg-info/requires.txt
+writing top-level names to sambergeni_controller.egg-info/top_level.txt
+reading manifest file 'sambergeni_controller.egg-info/SOURCES.txt'
+writing manifest file 'sambergeni_controller.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni-controller.egg-link (link to .)
+Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node4 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+
+Installed /home/sambergeni/ros2_ws/build/sambergeni_controller
+running symlink_data
+symbolically linking /home/sambergeni/ros2_ws/build/sambergeni_controller/resource/sambergeni_controller -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index/packages
+symbolically linking /home/sambergeni/ros2_ws/build/sambergeni_controller/package.xml -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/sambergeni_controller

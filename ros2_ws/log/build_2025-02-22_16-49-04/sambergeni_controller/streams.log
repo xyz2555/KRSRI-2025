@@ -1,0 +1,26 @@
+[3.788s] Invoking command in '/home/sambergeni/ros2_ws/src/sambergeni_controller': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/sambergeni_controller build --build-base /home/sambergeni/ros2_ws/build/sambergeni_controller/build install --record /home/sambergeni/ros2_ws/build/sambergeni_controller/install.log --single-version-externally-managed install_data
+[5.328s] running egg_info
+[5.330s] writing ../../build/sambergeni_controller/sambergeni_controller.egg-info/PKG-INFO
+[5.331s] writing dependency_links to ../../build/sambergeni_controller/sambergeni_controller.egg-info/dependency_links.txt
+[5.333s] writing entry points to ../../build/sambergeni_controller/sambergeni_controller.egg-info/entry_points.txt
+[5.335s] writing requirements to ../../build/sambergeni_controller/sambergeni_controller.egg-info/requires.txt
+[5.336s] writing top-level names to ../../build/sambergeni_controller/sambergeni_controller.egg-info/top_level.txt
+[5.346s] reading manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+[5.351s] writing manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+[5.351s] running build
+[5.352s] running build_py
+[5.352s] copying sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[5.354s] running install
+[5.355s] running install_lib
+[5.360s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[5.364s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing3.py to testing3.cpython-310.pyc
+[5.367s] running install_data
+[5.368s] running install_egg_info
+[5.377s] removing '/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[5.380s] Copying ../../build/sambergeni_controller/sambergeni_controller.egg-info to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info
+[5.391s] running install_scripts
+[5.483s] Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[5.485s] Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[5.486s] Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[5.488s] writing list of installed files to '/home/sambergeni/ros2_ws/build/sambergeni_controller/install.log'
+[5.652s] Invoked command in '/home/sambergeni/ros2_ws/src/sambergeni_controller' returned '0': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/sambergeni_controller build --build-base /home/sambergeni/ros2_ws/build/sambergeni_controller/build install --record /home/sambergeni/ros2_ws/build/sambergeni_controller/install.log --single-version-externally-managed install_data

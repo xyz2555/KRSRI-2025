@@ -1,0 +1,5 @@
+  File "/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing3.py", line 6
+    from __future__ import division
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: from __future__ imports must occur at the beginning of the file
+

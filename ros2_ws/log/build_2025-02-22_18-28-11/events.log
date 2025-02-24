@@ -1,0 +1,104 @@
+[0.000000] (-) TimerEvent: {}
+[0.002374] (sambergeni_controller) JobQueued: {'identifier': 'sambergeni_controller', 'dependencies': OrderedDict()}
+[0.003248] (sambergeni_controller) JobStarted: {'identifier': 'sambergeni_controller'}
+[0.100317] (-) TimerEvent: {}
+[0.202253] (-) TimerEvent: {}
+[0.303084] (-) TimerEvent: {}
+[0.404568] (-) TimerEvent: {}
+[0.507279] (-) TimerEvent: {}
+[0.608181] (-) TimerEvent: {}
+[0.708887] (-) TimerEvent: {}
+[0.809596] (-) TimerEvent: {}
+[0.910303] (-) TimerEvent: {}
+[1.011366] (-) TimerEvent: {}
+[1.112893] (-) TimerEvent: {}
+[1.215862] (-) TimerEvent: {}
+[1.317159] (-) TimerEvent: {}
+[1.417810] (-) TimerEvent: {}
+[1.518550] (-) TimerEvent: {}
+[1.619467] (-) TimerEvent: {}
+[1.724336] (-) TimerEvent: {}
+[1.825134] (-) TimerEvent: {}
+[1.925953] (-) TimerEvent: {}
+[2.026755] (-) TimerEvent: {}
+[2.127624] (-) TimerEvent: {}
+[2.228776] (-) TimerEvent: {}
+[2.329555] (-) TimerEvent: {}
+[2.430600] (-) TimerEvent: {}
+[2.531659] (-) TimerEvent: {}
+[2.633782] (-) TimerEvent: {}
+[2.736354] (-) TimerEvent: {}
+[2.837255] (-) TimerEvent: {}
+[2.938841] (-) TimerEvent: {}
+[3.039639] (-) TimerEvent: {}
+[3.140303] (-) TimerEvent: {}
+[3.241002] (-) TimerEvent: {}
+[3.341716] (-) TimerEvent: {}
+[3.442433] (-) TimerEvent: {}
+[3.550014] (-) TimerEvent: {}
+[3.650892] (-) TimerEvent: {}
+[3.751888] (-) TimerEvent: {}
+[3.852759] (-) TimerEvent: {}
+[3.953639] (-) TimerEvent: {}
+[4.054827] (-) TimerEvent: {}
+[4.155445] (-) TimerEvent: {}
+[4.256084] (-) TimerEvent: {}
+[4.356812] (-) TimerEvent: {}
+[4.457578] (-) TimerEvent: {}
+[4.558263] (-) TimerEvent: {}
+[4.659103] (-) TimerEvent: {}
+[4.759820] (-) TimerEvent: {}
+[4.860544] (-) TimerEvent: {}
+[4.961222] (-) TimerEvent: {}
+[5.062113] (-) TimerEvent: {}
+[5.163479] (-) TimerEvent: {}
+[5.242786] (sambergeni_controller) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/sambergeni_controller', 'build', '--build-base', '/home/sambergeni/ros2_ws/build/sambergeni_controller/build', 'install', '--record', '/home/sambergeni/ros2_ws/build/sambergeni_controller/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/sambergeni/ros2_ws/src/sambergeni_controller', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sambergeni', 'LC_TIME': 'id_ID.UTF-8', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/sambergeni', 'OLDPWD': '/home/sambergeni/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'id_ID.UTF-8', 'SYSTEMD_EXEC_PID': '1306', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/sambergeni/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'sambergeni', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'sambergeni', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/sambergeni-desktop:@/tmp/.ICE-unix/1267,unix/sambergeni-desktop:/tmp/.ICE-unix/1267', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'id_ID.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/6ac7ef04_4826_492f_99ae_7b458fcc3d10', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LD_PRELOAD': '', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'id_ID.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.V2W812', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.126', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/sambergeni/ros2_ws/install/sambergeni_controller:/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'id_ID.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'id_ID.UTF-8', 'LC_IDENTIFICATION': 'id_ID.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/sambergeni/ros2_ws/build/sambergeni_controller', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'id_ID.UTF-8', 'LC_PAPER': 'id_ID.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[5.264397] (-) TimerEvent: {}
+[5.365635] (-) TimerEvent: {}
+[5.466586] (-) TimerEvent: {}
+[5.567237] (-) TimerEvent: {}
+[5.668001] (-) TimerEvent: {}
+[5.768823] (-) TimerEvent: {}
+[5.869422] (-) TimerEvent: {}
+[5.970030] (-) TimerEvent: {}
+[6.070810] (-) TimerEvent: {}
+[6.171435] (-) TimerEvent: {}
+[6.272060] (-) TimerEvent: {}
+[6.372875] (-) TimerEvent: {}
+[6.473654] (-) TimerEvent: {}
+[6.574356] (-) TimerEvent: {}
+[6.675294] (-) TimerEvent: {}
+[6.775945] (-) TimerEvent: {}
+[6.847507] (sambergeni_controller) StdoutLine: {'line': b'running egg_info\n'}
+[6.852839] (sambergeni_controller) StdoutLine: {'line': b'writing ../../build/sambergeni_controller/sambergeni_controller.egg-info/PKG-INFO\n'}
+[6.854773] (sambergeni_controller) StdoutLine: {'line': b'writing dependency_links to ../../build/sambergeni_controller/sambergeni_controller.egg-info/dependency_links.txt\n'}
+[6.856895] (sambergeni_controller) StdoutLine: {'line': b'writing entry points to ../../build/sambergeni_controller/sambergeni_controller.egg-info/entry_points.txt\n'}
+[6.858204] (sambergeni_controller) StdoutLine: {'line': b'writing requirements to ../../build/sambergeni_controller/sambergeni_controller.egg-info/requires.txt\n'}
+[6.858890] (sambergeni_controller) StdoutLine: {'line': b'writing top-level names to ../../build/sambergeni_controller/sambergeni_controller.egg-info/top_level.txt\n'}
+[6.867274] (sambergeni_controller) StdoutLine: {'line': b"reading manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'\n"}
+[6.871339] (sambergeni_controller) StdoutLine: {'line': b"writing manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'\n"}
+[6.871972] (sambergeni_controller) StdoutLine: {'line': b'running build\n'}
+[6.872478] (sambergeni_controller) StdoutLine: {'line': b'running build_py\n'}
+[6.873497] (sambergeni_controller) StdoutLine: {'line': b'copying sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller\n'}
+[6.875358] (sambergeni_controller) StdoutLine: {'line': b'running install\n'}
+[6.875942] (-) TimerEvent: {}
+[6.876807] (sambergeni_controller) StdoutLine: {'line': b'running install_lib\n'}
+[6.881005] (sambergeni_controller) StdoutLine: {'line': b'copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller\n'}
+[6.884344] (sambergeni_controller) StdoutLine: {'line': b'byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing3.py to testing3.cpython-310.pyc\n'}
+[6.887576] (sambergeni_controller) StdoutLine: {'line': b'running install_data\n'}
+[6.888189] (sambergeni_controller) StdoutLine: {'line': b'running install_egg_info\n'}
+[6.895219] (sambergeni_controller) StdoutLine: {'line': b"removing '/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[6.897038] (sambergeni_controller) StdoutLine: {'line': b'Copying ../../build/sambergeni_controller/sambergeni_controller.egg-info to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info\n'}
+[6.902852] (sambergeni_controller) StdoutLine: {'line': b'running install_scripts\n'}
+[6.976217] (-) TimerEvent: {}
+[7.004759] (sambergeni_controller) StdoutLine: {'line': b'Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller\n'}
+[7.005838] (sambergeni_controller) StdoutLine: {'line': b'Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller\n'}
+[7.006743] (sambergeni_controller) StdoutLine: {'line': b'Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller\n'}
+[7.015776] (sambergeni_controller) StdoutLine: {'line': b'Installing test_node4 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller\n'}
+[7.018022] (sambergeni_controller) StdoutLine: {'line': b"writing list of installed files to '/home/sambergeni/ros2_ws/build/sambergeni_controller/install.log'\n"}
+[7.076909] (-) TimerEvent: {}
+[7.178385] (-) TimerEvent: {}
+[7.202207] (sambergeni_controller) CommandEnded: {'returncode': 0}
+[7.278686] (-) TimerEvent: {}
+[7.288095] (sambergeni_controller) JobEnded: {'identifier': 'sambergeni_controller', 'rc': 0}
+[7.293465] (-) EventReactorShutdown: {}

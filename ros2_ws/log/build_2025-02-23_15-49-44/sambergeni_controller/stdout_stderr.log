@@ -1,0 +1,37 @@
+running develop
+Removing /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni-controller.egg-link (link to .)
+running egg_info
+writing ../../build/sambergeni_controller/sambergeni_controller.egg-info/PKG-INFO
+writing dependency_links to ../../build/sambergeni_controller/sambergeni_controller.egg-info/dependency_links.txt
+writing entry points to ../../build/sambergeni_controller/sambergeni_controller.egg-info/entry_points.txt
+writing requirements to ../../build/sambergeni_controller/sambergeni_controller.egg-info/requires.txt
+writing top-level names to ../../build/sambergeni_controller/sambergeni_controller.egg-info/top_level.txt
+reading manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+writing manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+running build
+running build_py
+copying sambergeni_controller/testing2.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+running install
+running install_lib
+creating /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing2.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/__init__.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing4.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing.py to testing.cpython-310.pyc
+byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing2.py to testing2.cpython-310.pyc
+byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing3.py to testing3.cpython-310.pyc
+byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing4.py to testing4.cpython-310.pyc
+running install_data
+copying resource/sambergeni_controller -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index/packages
+copying package.xml -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/sambergeni_controller
+running install_egg_info
+Copying ../../build/sambergeni_controller/sambergeni_controller.egg-info to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info
+running install_scripts
+Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+Installing test_node4 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+writing list of installed files to '/home/sambergeni/ros2_ws/build/sambergeni_controller/install.log'
