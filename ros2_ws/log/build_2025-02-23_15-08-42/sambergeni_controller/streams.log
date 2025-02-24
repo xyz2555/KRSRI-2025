@@ -1,0 +1,22 @@
+[3.878s] Invoking command in '/home/sambergeni/ros2_ws/build/sambergeni_controller': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sambergeni/ros2_ws/build/sambergeni_controller/build --no-deps symlink_data --force
+[5.555s] running develop
+[6.859s] running egg_info
+[6.860s] writing sambergeni_controller.egg-info/PKG-INFO
+[6.861s] writing dependency_links to sambergeni_controller.egg-info/dependency_links.txt
+[6.862s] writing entry points to sambergeni_controller.egg-info/entry_points.txt
+[6.863s] writing requirements to sambergeni_controller.egg-info/requires.txt
+[6.864s] writing top-level names to sambergeni_controller.egg-info/top_level.txt
+[6.873s] reading manifest file 'sambergeni_controller.egg-info/SOURCES.txt'
+[6.877s] writing manifest file 'sambergeni_controller.egg-info/SOURCES.txt'
+[6.885s] running build_ext
+[6.886s] Creating /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni-controller.egg-link (link to .)
+[6.889s] Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[6.890s] Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[6.891s] Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[6.894s] Installing test_node4 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[6.897s] 
+[6.898s] Installed /home/sambergeni/ros2_ws/build/sambergeni_controller
+[6.898s] running symlink_data
+[6.899s] symbolically linking /home/sambergeni/ros2_ws/build/sambergeni_controller/resource/sambergeni_controller -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index/packages
+[6.900s] symbolically linking /home/sambergeni/ros2_ws/build/sambergeni_controller/package.xml -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/sambergeni_controller
+[7.098s] Invoked command in '/home/sambergeni/ros2_ws/build/sambergeni_controller' returned '0': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sambergeni/ros2_ws/build/sambergeni_controller/build --no-deps symlink_data --force

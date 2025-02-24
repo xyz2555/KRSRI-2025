@@ -1,0 +1,6 @@
+[console_scripts]
+test_node = sambergeni_controller.testing:main
+test_node2 = sambergeni_controller.testing2:main
+test_node3 = sambergeni_controller.testing3:main
+test_node4 = sambergeni_controller.testing4:main
+

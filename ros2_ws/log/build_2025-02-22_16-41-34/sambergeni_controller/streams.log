@@ -1,0 +1,48 @@
+[5.301s] Invoking command in '/home/sambergeni/ros2_ws/src/sambergeni_controller': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/sambergeni_controller build --build-base /home/sambergeni/ros2_ws/build/sambergeni_controller/build install --record /home/sambergeni/ros2_ws/build/sambergeni_controller/install.log --single-version-externally-managed install_data
+[7.431s] running egg_info
+[7.439s] creating ../../build/sambergeni_controller/sambergeni_controller.egg-info
+[7.440s] writing ../../build/sambergeni_controller/sambergeni_controller.egg-info/PKG-INFO
+[7.443s] writing dependency_links to ../../build/sambergeni_controller/sambergeni_controller.egg-info/dependency_links.txt
+[7.445s] writing entry points to ../../build/sambergeni_controller/sambergeni_controller.egg-info/entry_points.txt
+[7.445s] writing requirements to ../../build/sambergeni_controller/sambergeni_controller.egg-info/requires.txt
+[7.447s] writing top-level names to ../../build/sambergeni_controller/sambergeni_controller.egg-info/top_level.txt
+[7.450s] writing manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+[7.456s] reading manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+[7.460s] writing manifest file '../../build/sambergeni_controller/sambergeni_controller.egg-info/SOURCES.txt'
+[7.460s] running build
+[7.461s] running build_py
+[7.462s] creating /home/sambergeni/ros2_ws/build/sambergeni_controller/build
+[7.462s] creating /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib
+[7.463s] creating /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.463s] copying sambergeni_controller/testing.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.463s] copying sambergeni_controller/testing2.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.464s] copying sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.465s] copying sambergeni_controller/__init__.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.465s] copying sambergeni_controller/testing4.py -> /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller
+[7.466s] running install
+[7.468s] running install_lib
+[7.471s] creating /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.472s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.473s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing2.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.474s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing3.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.474s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/__init__.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.475s] copying /home/sambergeni/ros2_ws/build/sambergeni_controller/build/lib/sambergeni_controller/testing4.py -> /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller
+[7.478s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing.py to testing.cpython-310.pyc
+[7.481s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing2.py to testing2.cpython-310.pyc
+[7.483s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing3.py to testing3.cpython-310.pyc
+[7.485s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/__init__.py to __init__.cpython-310.pyc
+[7.487s] byte-compiling /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller/testing4.py to testing4.cpython-310.pyc
+[7.488s] running install_data
+[7.489s] creating /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index
+[7.489s] creating /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index
+[7.489s] creating /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index/packages
+[7.490s] copying resource/sambergeni_controller -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/ament_index/resource_index/packages
+[7.490s] copying package.xml -> /home/sambergeni/ros2_ws/install/sambergeni_controller/share/sambergeni_controller
+[7.490s] running install_egg_info
+[7.497s] Copying ../../build/sambergeni_controller/sambergeni_controller.egg-info to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages/sambergeni_controller-0.0.0-py3.10.egg-info
+[7.504s] running install_scripts
+[7.597s] Installing test_node script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[7.597s] Installing test_node2 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[7.598s] Installing test_node3 script to /home/sambergeni/ros2_ws/install/sambergeni_controller/lib/sambergeni_controller
+[7.600s] writing list of installed files to '/home/sambergeni/ros2_ws/build/sambergeni_controller/install.log'
+[7.776s] Invoked command in '/home/sambergeni/ros2_ws/src/sambergeni_controller' returned '0': PYTHONPATH=/home/sambergeni/ros2_ws/build/sambergeni_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sambergeni/ros2_ws/install/sambergeni_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/sambergeni_controller build --build-base /home/sambergeni/ros2_ws/build/sambergeni_controller/build install --record /home/sambergeni/ros2_ws/build/sambergeni_controller/install.log --single-version-externally-managed install_data
