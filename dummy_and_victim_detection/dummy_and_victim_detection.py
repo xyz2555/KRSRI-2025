@@ -1,6 +1,4 @@
 import cv2
-import time
-import random
 import numpy as np
 
 FRAME_SIZE = 640
