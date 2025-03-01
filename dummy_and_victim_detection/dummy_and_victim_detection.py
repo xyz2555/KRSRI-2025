@@ -133,7 +133,9 @@ if __name__ == "__main__":
     # Menginisialisasi model 
     model = cv2.dnn.readNet("dummy_and_victim_model.onnx")
 
-    cap = cv2.VideoCapture(0) # Mengambil video
+    # Mengambil video 
+    cap = cv2.VideoCapture(0) # SESUAIKAN DENGAN WEBCAM
+    
     grabbed = True            # Variabel untuk mengecek apakah frame berhasil diambil
 
     while True:
@@ -155,12 +157,12 @@ if __name__ == "__main__":
         draw_detections(frame, indexes, largest_idx)
 
         # Menampilkan gambar dengan deteksi
-        cv2.imshow("Detected", frame)
+        cv2.imshow("Detected", frame) # HAPUS SAAT MAU MODE HEADLESS
 
         # Keluar jika tombol 'q' ditekan
-        if cv2.waitKey(1) == ord('q'):
+        if cv2.waitKey(1) == ord('q'): # HAPUS SAAT MAU MODE HEADLESS
             break
 
     # Menutup webcam dan jendela tampilan
     cap.release()
-    cv2.destroyAllWindows()
+    cv2.destroyAllWindows() # HAPUS SAAT MAU MODE HEADLESS
