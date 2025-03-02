@@ -29,7 +29,7 @@ struct JointAngles {
 JointAngles inverseKinematics(Point target) {
   JointAngles angles;
 
-  double q0 = 0;
+  double q0 = atan2(target.y, target.x) * (180/PI);
   double r = sqrt(target.y * target.y + target.z * target.z);
 
   if (r > (a1 + a2) || r < abs(a1 - a2)) {
@@ -60,14 +60,14 @@ JointAngles inverseKinematics(Point target) {
 
   return angles;
 }
-      
+
 void moveServoSmooth(JointAngles angles) {
   bool moving = true;
 
   while (moving) {
-    board1.setPWM(0, 0, angleToPulse(angles.theta1));
-    board1.setPWM(1, 0, angleToPulse(angles.theta2));
-    board1.setPWM(15, 0, angleToPulse(angles.theta3));
+    board1.setPWM(15, 0, angleToPulse(angles.theta1));
+    board1.setPWM(7, 0, angleToPulse(angles.theta2));
+    board1.setPWM(1, 0, angleToPulse(angles.theta3));
     moving = false;
   }
 }
@@ -79,11 +79,13 @@ double angleToPulse(double ang)
   return pulse;
 }
 
-const int NUM_POINTS = 3;
+const int NUM_POINTS = 5;
 Point points[NUM_POINTS] = {
   {0, 8, 14},
   {0, 5.853531763034923, 8.648622196577978},
-  {0, 8.239610763246004, 6.41648770513905}
+  {5, 8.239610763246004, 6.41648770513905},
+  {10, 8.239610763246004, 6.41648770513905},
+  {10, 8.239610763246004, 6.41648770513905}
 };
 
 void setup() {
@@ -97,7 +99,7 @@ void loop() {
   for (int i = 0; i < NUM_POINTS; i++) {
     JointAngles angles = inverseKinematics(points[i]);
     moveServoSmooth(angles);
-    delay(2000);
+    delay(600);
   }
 
   //  Point targetPoint = {0, 5.853531763034923, 8.648622196577978};
