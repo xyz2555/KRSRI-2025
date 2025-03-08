@@ -97,7 +97,7 @@ def process_after_detections(frame, indexes, largest_idx):
 if __name__ == "__main__":
     
     # Menginisialisasi model 
-    model = cv2.dnn.readNet("dummy_and_victim_model.onnx")
+    model = cv2.dnn.readNet("best.onnx")
 
     # Mengambil video 
     cap = cv2.VideoCapture(0) # SESUAIKAN DENGAN WEBCAM
