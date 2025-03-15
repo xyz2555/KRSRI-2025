@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 FRAME_SIZE = 640
 NAMES = ["dummy", "victim"] # Urutannya harus disesuaikan dengan yang ada di data.yaml
@@ -86,19 +87,6 @@ def draw_detections(frame, indexes, largest_idx):
             window_center[1] - point[1] # Y relatif terhadap tengah (dibalik karena Y komputer terbalik)
         )
 
-    # Menggambar sumbu koordinat
-    axis_length = 50
-    # Sumbu x
-    cv2.line(frame, 
-            (window_center[0] - axis_length, window_center[1]),
-            (window_center[0] + axis_length, window_center[1]),
-            (0, 0, 255), 2)
-    # Sumbu y
-    cv2.line(frame, 
-            (window_center[0], window_center[1] - axis_length),
-            (window_center[0], window_center[1] + axis_length),
-            (0, 255, 0), 2)
-    
     # Menggambar titik center window
     cv2.circle(frame, window_center, 5, (255, 0, 0), -1)
 
@@ -114,14 +102,12 @@ def draw_detections(frame, indexes, largest_idx):
         if (idx == largest_idx) and (class_id == 1):
             # Untuk objek terbesar (paling dekat dengan kamera)
             cv2.rectangle(frame, (left, top), (left + width, top + height), (0, 255, 0), 3)
-            cv2.circle(frame, bbox_center, 7, (0, 0, 255), -1)
             cv2.line(frame, bbox_center, window_center, (0, 255, 255), 2)
             print(f"{center_coord}")
         else:
             # Untuk objek lain
             cv2.rectangle(frame, (left, top), (left + width, top + height), (255, 255, 255), 1)
-            cv2.circle(frame, bbox_center, 3, (255, 255, 255), -1)
-
+        
         # Membuatlabel bounding box
         label = f"{NAMES[class_id]} {round(float(conf), 2)}"
 
@@ -131,12 +117,21 @@ def draw_detections(frame, indexes, largest_idx):
 if __name__ == "__main__":
     
     # Menginisialisasi model 
-    model = cv2.dnn.readNet("best.onnx")
+    model = cv2.dnn.readNet("dummy_and_victim_model.onnx")
 
-    cap = cv2.VideoCapture(0) # Mengambil video
-    grabbed = True            # Variabel untuk mengecek apakah frame berhasil diambil
-
+    cap = cv2.VideoCapture(0)  # Mengambil video
+    grabbed = True             # Variabel untuk mengecek apakah frame berhasil diambil
+    
+    # Inisiasi untuk fps
+    frame_count = 0
+    start_time = time.time()
+    fps_list = []
+    fps_update_interval = 10  # update fps setiap 10 frame
+    avg_fps = 0 
+    
     while True:
+        frame_start_time = time.time()
+        
         grabbed, capture = cap.read()  # Membaca frame dari webcam
 
         # Keluar jika tidak ada frame yang diambil
@@ -153,6 +148,21 @@ if __name__ == "__main__":
         indexes, largest_idx = detect_objects(model, blob, frame.shape[1], frame.shape[0])
 
         draw_detections(frame, indexes, largest_idx)
+        
+        # Menghitung fps
+        frame_count += 1
+        frame_time = time.time() - frame_start_time
+        current_fps = 1 / frame_time if frame_time > 0 else 0
+        fps_list.append(current_fps)
+        
+        if frame_count % fps_update_interval == 0:
+            avg_fps = sum(fps_list) / len(fps_list)
+            if len(fps_list) > 100:
+                fps_list = fps_list[-100:]
+                
+        # Menampilkan fps di frame
+        cv2.putText(frame, f"FPS: {current_fps:.1f} Avg: {avg_fps:.1f}", 
+                   (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         # Menampilkan gambar dengan deteksi
         cv2.imshow("Detected", frame)
@@ -160,6 +170,12 @@ if __name__ == "__main__":
         # Keluar jika tombol 'q' ditekan
         if cv2.waitKey(1) == ord('q'):
             break
+    
+    # Hitung dan mencetak rata-rata fps
+    end_time = time.time()
+    total_time = end_time - start_time
+    average_fps = frame_count / total_time if total_time > 0 else 0
+    print(f"Average FPS: {average_fps:.2f}")
 
     # Menutup webcam dan jendela tampilan
     cap.release()
