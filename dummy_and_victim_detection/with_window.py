@@ -117,7 +117,7 @@ def draw_detections(frame, indexes, largest_idx):
 if __name__ == "__main__":
     
     # Menginisialisasi model 
-    model = cv2.dnn.readNet("dummy_and_victim_model.onnx")
+    model = cv2.dnn.readNet("best.onnx")
 
     cap = cv2.VideoCapture(0)  # Mengambil video
     grabbed = True             # Variabel untuk mengecek apakah frame berhasil diambil
