@@ -81,10 +81,10 @@ double angleToPulse(double ang)
 
 const int NUM_POINTS = 1;
 Point points[NUM_POINTS] = {
-  {0, 8, 14.5}
+  {0, 8, 14.5},
 //  {0, 5.853531763034923, 8.648622196577978},
 //  {5, 8.239610763246004, 6.41648770513905},
-//  {10, 8.239610763246004, 6.41648770513905},
+//  {10, 8.239610763246004, 6.41648770513905}
 //  {10, 8.239610763246004, 6.41648770513905}
 };
 
@@ -93,16 +93,12 @@ void setup() {
   Serial.println("16 channel Servo test!");
   board1.begin();
   board1.setPWMFreq(60);
-}
+} 
 
 void loop() {
   for (int i = 0; i < NUM_POINTS; i++) {
     JointAngles angles = inverseKinematics(points[i]);
     moveServoSmooth(angles);
-    delay(600);
+    delay(150);
   }
-
-  //  Point targetPoint = {0, 5.853531763034923, 8.648622196577978};
-  //  JointAngles angles = inverseKinematics(targetPoint);
-  //  moveServoSmooth(angles);
 }
