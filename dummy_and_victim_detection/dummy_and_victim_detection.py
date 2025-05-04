@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 FRAME_SIZE = 640
-NAMES = ["dummy", "victim"] # Urutannya harus disesuaikan dengan yang ada di data.yaml
+# NAMES = ["dummy", "victim"] # Urutannya harus disesuaikan dengan yang ada di data.yaml
 
 def preprocess_frame(frame) :
     blob = cv2.dnn.blobFromImage(frame, 
@@ -73,8 +73,7 @@ def detect_objects(model, blob, frame_width, frame_height):
     return indexes, largest_idx
 
 # Fungsi untuk enggambar hasil deteksi pada frame
-def draw_detections(frame, indexes, largest_idx):
-    """Menggambar bounding box dan label pada gambar."""
+def process_after_detections(frame, indexes, largest_idx):
 
     frame_height, frame_width = frame.shape[:2]
     window_center = (frame_width // 2, frame_height // 2)
@@ -82,56 +81,23 @@ def draw_detections(frame, indexes, largest_idx):
     # Fungsi untuk mengkonversi koordinat absolut menjadi relatif terhadap center
     def to_center_coord(point):
         return (
-            point[0] - window_center[0],
-            window_center[1] - point[1] # Y relatif terhadap tengah (dibalik karena Y komputer terbalik)
+            point[0] - window_center[0]
         )
 
-    # Menggambar sumbu koordinat
-    axis_length = 50
-    # Sumbu x
-    cv2.line(frame, 
-            (window_center[0] - axis_length, window_center[1]),
-            (window_center[0] + axis_length, window_center[1]),
-            (0, 0, 255), 2)
-    # Sumbu y
-    cv2.line(frame, 
-            (window_center[0], window_center[1] - axis_length),
-            (window_center[0], window_center[1] + axis_length),
-            (0, 255, 0), 2)
-    
-    # Menggambar titik center window
-    cv2.circle(frame, window_center, 5, (255, 0, 0), -1)
-
-    for idx, (box, conf, class_id) in enumerate(indexes):
+    for idx, (box, _, class_id) in enumerate(indexes):
         left, top, width, height = box
 
         # Titik center bounding box
         bbox_center = (left + width // 2, top + height // 2)
-
-        # Konversi ke koordinat relatif terhadap center window
-        center_coord = to_center_coord(bbox_center)
         
         if (idx == largest_idx) and (class_id == 1):
             # Untuk objek terbesar (paling dekat dengan kamera)
-            cv2.rectangle(frame, (left, top), (left + width, top + height), (0, 255, 0), 3)
-            cv2.circle(frame, bbox_center, 7, (0, 0, 255), -1)
-            cv2.line(frame, bbox_center, window_center, (0, 255, 255), 2)
-            print(f"{center_coord}")
-        else:
-            # Untuk objek lain
-            cv2.rectangle(frame, (left, top), (left + width, top + height), (255, 255, 255), 1)
-            cv2.circle(frame, bbox_center, 3, (255, 255, 255), -1)
-
-        # Membuatlabel bounding box
-        label = f"{NAMES[class_id]} {round(float(conf), 2)}"
-
-        # menambahkan labek ke bounding box
-        cv2.putText(frame, label, (left, top - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
-
+            print(f"{to_center_coord(bbox_center)}")
+        
 if __name__ == "__main__":
     
     # Menginisialisasi model 
-    model = cv2.dnn.readNet("dummy_and_victim_model.onnx")
+    model = cv2.dnn.readNet("best.onnx")
 
     # Mengambil video 
     cap = cv2.VideoCapture(0) # SESUAIKAN DENGAN WEBCAM
@@ -154,15 +120,7 @@ if __name__ == "__main__":
         # Mendeteksi objek dalam frame
         indexes, largest_idx = detect_objects(model, blob, frame.shape[1], frame.shape[0])
 
-        draw_detections(frame, indexes, largest_idx)
-
-        # Menampilkan gambar dengan deteksi
-        cv2.imshow("Detected", frame) # HAPUS SAAT MAU MODE HEADLESS
-
-        # Keluar jika tombol 'q' ditekan
-        if cv2.waitKey(1) == ord('q'): # HAPUS SAAT MAU MODE HEADLESS
-            break
+        process_after_detections(frame, indexes, largest_idx)
 
     # Menutup webcam dan jendela tampilan
     cap.release()
-    cv2.destroyAllWindows() # HAPUS SAAT MAU MODE HEADLESS
