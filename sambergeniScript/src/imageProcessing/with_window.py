@@ -105,9 +105,11 @@ def draw_detections(frame, indexes, largest_idx):
             cv2.rectangle(frame, (left, top), (left + width, top + height), (0, 255, 0), 3)
             cv2.line(frame, bbox_center, window_center, (0, 255, 255), 2)
             print(f"{center_coord}")
+            # print(type(center_coord))
         else:
             # Untuk objek lain
             cv2.rectangle(frame, (left, top), (left + width, top + height), (255, 255, 255), 1)
+            # print(f"{center_coord}")
         
         # Membuatlabel bounding box
         label = f"{NAMES[class_id]} {round(float(conf), 2)}"
@@ -118,7 +120,6 @@ def draw_detections(frame, indexes, largest_idx):
 if __name__ == "__main__":
     
     # Menginisialisasi model 
-
     model = cv2.dnn.readNet("v5n.onnx")
 
     cap = cv2.VideoCapture(0)  # Mengambil video
