@@ -4,8 +4,8 @@ Adafruit_PWMServoDriver board1 = Adafruit_PWMServoDriver(0x40);
 #define SERVOMIN  125
 #define SERVOMAX  625
 
-double a1 = 8;
-double a2 = 14.5;
+double a1 = 6;
+double a2 = 8;
 
 const int servo1Offset = 90;  // Offset to align with 0 degrees
 const int servo2Offset = 90;  // Offset to align with 0 degrees
@@ -55,8 +55,15 @@ JointAngles inverseKinematics(Point target) {
   double reverse = abs(servo2Offset - q2);
 
   angles.theta1 = q0;
-  angles.theta2 = constrain(q1 + servo1Offset, servo1Min, servo1Max);
-  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);
+
+  //kanan
+//  angles.theta2 = constrain(q1 + servo1Offset, servo1Min, servo1Max); 
+//  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);
+//  angles.theta3 = constrain(q2, servo2Min, servo2Max);
+
+  // kiri
+  angles.theta2 = constrain(abs(servo1Offset - q1), servo1Min, servo1Max);
+  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);// kanan
 
   return angles;
 }
@@ -79,11 +86,12 @@ double angleToPulse(double ang)
   return pulse;
 }
 
-const int NUM_POINTS = 1;
+const int NUM_POINTS = 2;
 Point points[NUM_POINTS] = {
-  {0, 8, 14.5},
-//  {0, 5.853531763034923, 8.648622196577978},
-//  {5, 8.239610763246004, 6.41648770513905},
+//  {0, 6, 8},
+  {0, 1.7955549577344083,  8.481117500890633}, // idle
+  {5, 1.7955549577344083, 10}, //idle naik+geser
+//  {10, 1.7955549577344083, 10},
 //  {10, 8.239610763246004, 6.41648770513905}
 //  {10, 8.239610763246004, 6.41648770513905}
 };
@@ -99,6 +107,6 @@ void loop() {
   for (int i = 0; i < NUM_POINTS; i++) {
     JointAngles angles = inverseKinematics(points[i]);
     moveServoSmooth(angles);
-    delay(150);
+    delay(300);
   }
 }
