@@ -56,14 +56,13 @@ JointAngles inverseKinematics(Point target) {
 
   angles.theta1 = q0;
 
-  //kanan
-//  angles.theta2 = constrain(q1 + servo1Offset, servo1Min, servo1Max); 
-//  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);
-//  angles.theta3 = constrain(q2, servo2Min, servo2Max);
+  //kiri
+  angles.theta2 = constrain(q1 + servo1Offset, servo1Min, servo1Max); 
+  angles.theta3 = constrain(q2, servo2Min, servo2Max);
 
-  // kiri
-  angles.theta2 = constrain(abs(servo1Offset - q1), servo1Min, servo1Max);
-  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);// kanan
+  // kanan
+//  angles.theta2 = constrain(abs(servo1Offset - q1), servo1Min, servo1Max);
+//  angles.theta3 = constrain(servo2Offset - reverse, servo2Min, servo2Max);// kanan
 
   return angles;
 }
@@ -88,9 +87,9 @@ double angleToPulse(double ang)
 
 const int NUM_POINTS = 2;
 Point points[NUM_POINTS] = {
-//  {0, 6, 8},
+  {0, 6, 8},
   {0, 1.7955549577344083,  8.481117500890633}, // idle
-  {5, 1.7955549577344083, 10}, //idle naik+geser
+//  {5, 1.7955549577344083, 10}, //idle naik+geser
 //  {10, 1.7955549577344083, 10},
 //  {10, 8.239610763246004, 6.41648770513905}
 //  {10, 8.239610763246004, 6.41648770513905}
@@ -107,6 +106,6 @@ void loop() {
   for (int i = 0; i < NUM_POINTS; i++) {
     JointAngles angles = inverseKinematics(points[i]);
     moveServoSmooth(angles);
-    delay(300);
+    delay(1500);
   }
 }
