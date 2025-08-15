@@ -9,10 +9,14 @@ konfigurasi di kanan q2 = 159.08 dengan bergerak ke 12, 14
 konfigurasi di kanan q2 = 180.00 dengan bergerak ke 08, 14
 
 
+biasa
+q1 = 86.42
+q2 = 86.48
+
 idle tinggi 
 q1 = 35.05
 q2 = 44.60
-
+// batas: atas gak kepake
 
 idle tinggi enak
 q1 = 43.05
@@ -26,3 +30,20 @@ q2 = 44.60
 idle naik 
 y = 8.239610763246004
 z = 6.41648770513905
+
+
+
+idle tinggi V2
+q1 = 125.05
+q2 = 125.6
+
+y = 6.688397410814847
+z = 19.093660444019015
+
+
+//batas
+x = 5.852999999999997
+y = 8.648
+
+hasil dari simulasi python adalah nilai q2 asli dari rumus di arduino
+jadi nilai q1 dan q2 yang ada di sini adalah hasil setelah ditransformasi 

@@ -71,9 +71,9 @@ void moveServoSmooth(JointAngles angles) {
   bool moving = true;
 
   while (moving) {
-    board1.setPWM(15, 0, angleToPulse(angles.theta1));
-    board1.setPWM(7, 0, angleToPulse(angles.theta2));
-    board1.setPWM(1, 0, angleToPulse(angles.theta3));
+    board1.setPWM(0, 0, angleToPulse(angles.theta1));
+    board1.setPWM(2, 0, angleToPulse(angles.theta2));
+    board1.setPWM(3, 0, angleToPulse(angles.theta3));
     moving = false;
   }
 }
@@ -85,12 +85,12 @@ double angleToPulse(double ang)
   return pulse;
 }
 
-const int NUM_POINTS = 2;
+const int NUM_POINTS = 4;
 Point points[NUM_POINTS] = {
   {0, 6, 8},
   {0, 1.7955549577344083,  8.481117500890633}, // idle
-//  {5, 1.7955549577344083, 10}, //idle naik+geser
-//  {10, 1.7955549577344083, 10},
+  {5, 1.7955549577344083, 10}, //idle naik+geser
+  {10, 1.7955549577344083, 10},
 //  {10, 8.239610763246004, 6.41648770513905}
 //  {10, 8.239610763246004, 6.41648770513905}
 };
@@ -106,6 +106,6 @@ void loop() {
   for (int i = 0; i < NUM_POINTS; i++) {
     JointAngles angles = inverseKinematics(points[i]);
     moveServoSmooth(angles);
-    delay(1500);
+    delay(300);
   }
 }

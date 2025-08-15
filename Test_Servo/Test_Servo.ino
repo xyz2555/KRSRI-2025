@@ -19,11 +19,34 @@ void setup() {
 }
 
 void loop() {
-  board1.setPWM(7, 0, angleToPulse(90));
-  board1.setPWM(1, 0, angleToPulse(90));
-  board1.setPWM(15, 0, angleToPulse(90));
-  board1.setPWM(8, 0, angleToPulse(90));
+//  board1.setPWM(0, 0, angleToPulse(45));
+//  board1.setPWM(2, 0, angleToPulse(90));
+//  board1.setPWM(3, 0, angleToPulse(90));
+//  
+//  board1.setPWM(4, 0, angleToPulse(45));
+//  board1.setPWM(6, 0, angleToPulse(90));
+//  board1.setPWM(7, 0, angleToPulse(90));
+//  
+//  board1.setPWM(8, 0, angleToPulse(45));
+//  board1.setPWM(10, 0, angleToPulse(90));
+//  board1.setPWM(11, 0, angleToPulse(90));
+//  
+//  board1.setPWM(12, 0, angleToPulse(45));
+//  board1.setPWM(14, 0, angleToPulse(90));
+//  board1.setPWM(15, 0, angleToPulse(90));
   delay(1000);
-  // put your main code here, to run repeatedly:
+
+  board1.setPWM(0, 0, angleToPulse(90));
+  board1.setPWM(4, 0, angleToPulse(90));
+  board1.setPWM(8, 0, angleToPulse(90));
+  board1.setPWM(12, 0, angleToPulse(90));
+
+  delay(1000);
+
+  board1.setPWM(0, 0, angleToPulse(120));
+  board1.setPWM(4, 0, angleToPulse(120));
+  board1.setPWM(8, 0, angleToPulse(120));
+  board1.setPWM(12, 0, angleToPulse(120));
+  
 
 }

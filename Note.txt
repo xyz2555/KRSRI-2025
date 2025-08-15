@@ -1,0 +1,6 @@
+Ubah alamat kaki ke dalam bentuk matriks
+ubah variabel untuk menyimpan derajat tiap servo menggunakan matriks serta tambahkan volatile agar nilainya mudah berubah ubah dan tidak dioptimasi oleh compiler
+
+servo pertama atau alpha sejajar diagonal = 90 derajat
+kaki kiri atau servo kiri derajat tambah = semakin ke depan
+kaki kanan atau servo kanan derajat tambah = semakin ke belakang
