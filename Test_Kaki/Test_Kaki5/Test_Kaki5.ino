@@ -75,7 +75,7 @@ void calibrate(void) {
 void standby(void) {
   move_speed = stand_seat_speed;
   for (int leg = 0; leg < 4; leg++) {
-    set_point(leg, 0, 1.7955549577344083,  8.481117500890633);
+    set_point(leg, 0,  -3.7573593128807143,  4.2426406871192865);
   }
   wait_all_reach();
 }
@@ -83,7 +83,7 @@ void standby(void) {
 void walk(void){
   move_speed = stand_seat_speed;
   for (int leg = 0; leg < 4; leg++) {
-    set_point(leg, 2, 1.7955549577344083, 10);
+    set_point(leg, 1, 1.7955549577344083, 10);
   }
   wait_all_reach();
 }
@@ -159,7 +159,14 @@ void servo_service(void) {
 }
 
 void inverse_kinematic(volatile float &alpha, volatile float &beta, volatile float &gamma, volatile float x, volatile float y, volatile float z) {
-  alpha = atan2(y, x) * (180 / PI);
+  if (abs(x) < 0.001) {
+    alpha = 90.0;  // Keep alpha stable when x≈0
+  } else {
+    alpha = atan2(y, x) * (180.0 / PI);
+    // Ensure positive angle
+    if (alpha < 0) alpha += 180.0;
+  }
+ 
   float r = sqrt(y * y + z * z);
 
   if (r > (a1 + a2) || r < abs(a1 - a2)) {
@@ -300,8 +307,8 @@ void loop() {
   delay(2000);
   standby();
   delay(2000);
-  walk();
-  delay(5000);
+//  walk();
+//  delay(5000);
   // put your main code here, to run repeatedly:
 
 }
