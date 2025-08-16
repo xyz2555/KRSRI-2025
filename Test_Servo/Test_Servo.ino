@@ -1,52 +1,49 @@
-#include <Adafruit_PWMServoDriver.h>
-Adafruit_PWMServoDriver board1 = Adafruit_PWMServoDriver(0x40);
+#include <Servo.h>
 
-#define SERVOMIN  125
-#define SERVOMAX  625
+//Servo servo[4][3];
+Servo servo01;
+Servo servo02;
 
-double angleToPulse(double ang)
-{ double pulse = map(ang, 0, 180, SERVOMIN, SERVOMAX);
-  Serial.print("Angle: "); Serial.print(ang);
-  Serial.print(" pulse: "); Serial.println(pulse);
-  return pulse;
-}
+const int servo_pin[4][3] = {
+  {2, 3, 4},
+  {5, 6, 7},
+  {8, 9, 10},
+  {11, 12, 13}
+};
+
+//void servo_attach(void)
+//{
+//  for (int i = 0; i < 4; i++)
+//  {
+//    for (int j = 0; j < 3; j++)
+//    {
+//      servo[i][j].attach(servo_pin[i][j]);
+//      delay(100);
+//    }
+//  }
+//}
+//
+//void servo_detach(void)
+//{
+//  for (int i = 0; i < 4; i++)
+//  {
+//    for (int j = 0; j < 3; j++)
+//    {
+//      servo[i][j].detach();
+//      delay(100);
+//    }
+//  }
+//}
 
 void setup() {
   Serial.begin(9600);
   Serial.println("16 channel Servo test!");
-  board1.begin();
-  board1.setPWMFreq(60);
+//  servo_attach();
+servo01.attach(3);
+servo02.attach(4);
 }
 
 void loop() {
-//  board1.setPWM(0, 0, angleToPulse(45));
-//  board1.setPWM(2, 0, angleToPulse(90));
-//  board1.setPWM(3, 0, angleToPulse(90));
-//  
-//  board1.setPWM(4, 0, angleToPulse(45));
-//  board1.setPWM(6, 0, angleToPulse(90));
-//  board1.setPWM(7, 0, angleToPulse(90));
-//  
-//  board1.setPWM(8, 0, angleToPulse(45));
-//  board1.setPWM(10, 0, angleToPulse(90));
-//  board1.setPWM(11, 0, angleToPulse(90));
-//  
-//  board1.setPWM(12, 0, angleToPulse(45));
-//  board1.setPWM(14, 0, angleToPulse(90));
-//  board1.setPWM(15, 0, angleToPulse(90));
-  delay(1000);
-
-  board1.setPWM(0, 0, angleToPulse(90));
-  board1.setPWM(4, 0, angleToPulse(90));
-  board1.setPWM(8, 0, angleToPulse(90));
-  board1.setPWM(12, 0, angleToPulse(90));
-
-  delay(1000);
-
-  board1.setPWM(0, 0, angleToPulse(120));
-  board1.setPWM(4, 0, angleToPulse(120));
-  board1.setPWM(8, 0, angleToPulse(120));
-  board1.setPWM(12, 0, angleToPulse(120));
-  
-
+  servo01.write(135);
+  servo02.write(135);
 }
