@@ -72,6 +72,22 @@ void calibrate(void) {
   wait_all_reach();
 }
 
+void standby(void) {
+  move_speed = stand_seat_speed;
+  for (int leg = 0; leg < 4; leg++) {
+    set_point(leg, 0, 1.7955549577344083,  8.481117500890633);
+  }
+  wait_all_reach();
+}
+
+void walk(void){
+  move_speed = stand_seat_speed;
+  for (int leg = 0; leg < 4; leg++) {
+    set_point(leg, 2, 1.7955549577344083, 10);
+  }
+  wait_all_reach();
+}
+
 // =============================================================
 //                      Use it only for angle
 // =============================================================
@@ -127,7 +143,7 @@ void servo_service(void) {
   static float alpha, beta, gamma;
 
   for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < 4; j++) {
+    for (int j = 0; j < 3; j++) {
       if (abs(point_now[i][j] - point_expect[i][j]) >= abs(temp_speed[i][j])) {
         point_now[i][j] += temp_speed[i][j];
       }
@@ -156,18 +172,9 @@ void inverse_kinematic(volatile float &alpha, volatile float &beta, volatile flo
   float gamma_sin_q2 = a2 * sin(gamma * PI / 180);
   float gamma_cos_q2 = a2 * cos(gamma * PI / 180);
 
-  //  Serial.println(r);
-  //  Serial.println(q2);
-  //  Serial.println(a2_sin_q2);
-  //  Serial.println(a2_cos_q2);
-
   float beta2 = atan2(gamma_sin_q2, (a1 + gamma_cos_q2)) * (180 / PI);
   float gamma2 = atan2(z, y) * (180 / PI);
   beta = gamma2 - beta2;
-
-  //  float reverse = abs(servo2Offset - gamma);
-  //
-  //  angles.theta1 = q0;
 }
 
 //void wait_reach_angle(int leg) {
@@ -262,10 +269,10 @@ void setup() {
   Serial.begin(9600);
   servo_attach();
 
-//  set_point(0, 0, 8, 6);
-//  set_point(1, 0, 8, 6);
-//  set_point(2, 0, 8, 6);
-//  set_point(3, 0, 8, 6);
+  //  set_point(0, 0, 8, 6);
+  //  set_point(1, 0, 8, 6);
+  //  set_point(2, 0, 8, 6);
+  //  set_point(3, 0, 8, 6);
 
   for (int i = 0; i < 4; i++)
   {
@@ -291,8 +298,10 @@ void setup() {
 void loop() {
   calibrate();
   delay(2000);
-  //  standby();
-  //  delay(3000);
+  standby();
+  delay(2000);
+  walk();
+  delay(5000);
   // put your main code here, to run repeatedly:
 
 }
