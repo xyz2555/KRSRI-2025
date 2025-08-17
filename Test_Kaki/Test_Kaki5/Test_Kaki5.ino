@@ -80,12 +80,172 @@ void standby(void) {
   wait_all_reach();
 }
 
-void walk(void){
+void walk(void) {
   move_speed = stand_seat_speed;
   for (int leg = 0; leg < 4; leg++) {
     set_point(leg, 1, 1.7955549577344083, 10);
   }
   wait_all_reach();
+}
+
+// Fungsi untuk maju 1 langkah dengan 1 kaki (crawl gait)
+void crawl_forward_step(int leg) {
+  // 1. Angkat kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);  // z naik (angkat)
+  wait_reach(leg);
+
+  // 2. Majuin kaki
+  set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);  // x maju
+  wait_reach(leg);
+
+  // 3. Turunkan kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);  // z turun (taruh)
+  wait_reach(leg);
+
+  // 4. Geser badan (kaki lain ikut mundur sedikit biar badan maju)
+  for (int i = 0; i < 4; i++) {
+    if (i != leg) {  // hanya geser kaki lain
+      set_point(i, point_now[i][0] + 1, KEEP, KEEP);
+    }
+  }
+  wait_all_reach();
+}
+
+void crawl_backward_step(int leg) {
+  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
+  wait_reach(leg);
+
+  set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
+  wait_reach(leg);
+
+  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
+  wait_reach(leg);
+
+  for (int i = 0; i < 4; i++) {
+    if (i != leg) {
+      set_point(i, point_now[i][0] - 1, KEEP, KEEP);
+    }
+  }
+  wait_all_reach();
+}
+
+void crawl_yaw_left_step(int leg) {
+  // 1. Angkat kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
+  wait_reach(leg);
+
+  // 2. Geser kaki untuk rotasi ke kiri
+  if (leg == 0 || leg == 2) {
+    // kaki kiri (depan kiri & belakang kiri) mundur
+    set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);
+  } else {
+    // kaki kanan (depan kanan & belakang kanan) maju
+    set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
+  }
+  wait_reach(leg);
+
+  // 3. Turunkan kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
+  wait_reach(leg);
+
+  // 4. Kaki lain ikut geser sedikit biar badan muter
+  for (int i = 0; i < 4; i++) {
+    if (i != leg) {
+      if (i == 0 || i == 2) {
+        set_point(i, point_now[i][0] + 1, KEEP, KEEP);
+      } else {
+        set_point(i, point_now[i][0] - 1, KEEP, KEEP);
+      }
+    }
+  }
+  wait_all_reach();
+}
+
+void crawl_yaw_right_step(int leg) {
+  // 1. Angkat kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
+  wait_reach(leg);
+
+  // 2. Geser kaki untuk rotasi ke kanan
+  if (leg == 0 || leg == 2) {
+    // kaki kiri (depan kiri & belakang kiri) maju
+    set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
+  } else {
+    // kaki kanan (depan kanan & belakang kanan) mundur
+    set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);
+  }
+  wait_reach(leg);
+
+  // 3. Turunkan kaki
+  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
+  wait_reach(leg);
+
+  // 4. Kaki lain ikut geser sedikit biar badan muter
+  for (int i = 0; i < 4; i++) {
+    if (i != leg) {
+      if (i == 0 || i == 2) {
+        set_point(i, point_now[i][0] - 1, KEEP, KEEP);
+      } else {
+        set_point(i, point_now[i][0] + 1, KEEP, KEEP);
+      }
+    }
+  }
+  wait_all_reach();
+}
+
+
+// Fungsi untuk jalan maju terus
+void crawl_forward() {
+  crawl_forward_step(0);  // depan kiri
+  crawl_forward_step(2);  // belakang kanan
+  crawl_forward_step(1);  // depan kanan
+  crawl_forward_step(3);  // belakang kiri
+}
+
+void crawl_backward() {
+  crawl_backward_step(0);
+  crawl_backward_step(1);
+  crawl_backward_step(2);
+  crawl_backward_step(3);
+}
+
+
+void crawl_yaw_left() {
+  crawl_yaw_left_step(0); // depan kiri
+  crawl_yaw_left_step(2); // belakang kanan
+  crawl_yaw_left_step(1); // depan kanan
+  crawl_yaw_left_step(3); // belakang kiri
+}
+
+// Rotasi kanan penuh
+void crawl_yaw_right() {
+  crawl_yaw_right_step(0);
+  crawl_yaw_right_step(2);
+  crawl_yaw_right_step(1);
+  crawl_yaw_right_step(3);
+}
+
+// =============================================================
+//                             Stage
+// =============================================================
+void stage1() {
+  for (int i = 0; i < 10; i++) {
+    crawl_forward();
+  }
+  delay(3000);
+  for (int i = 0; i < 10; i++) {
+    crawl_backward();
+  }
+}
+
+void stage2() {
+  for (int i = 0; i < 5; i++) {
+    crawl_yaw_left();
+  }
+  delay(3000);
+  for (int i = 0; i < 5; i++) {
+    crawl_yaw_right();
+  }
 }
 
 // =============================================================
@@ -166,7 +326,7 @@ void inverse_kinematic(volatile float &alpha, volatile float &beta, volatile flo
     // Ensure positive angle
     if (alpha < 0) alpha += 180.0;
   }
- 
+
   float r = sqrt(y * y + z * z);
 
   if (r > (a1 + a2) || r < abs(a1 - a2)) {
@@ -305,10 +465,10 @@ void setup() {
 void loop() {
   calibrate();
   delay(2000);
-  standby();
-  delay(2000);
-//  walk();
-//  delay(5000);
+  // standby();
+  stage1();
+  delay(4000);
+  //  walk();
+  //  delay(5000);
   // put your main code here, to run repeatedly:
-
 }
