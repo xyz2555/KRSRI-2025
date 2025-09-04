@@ -7,6 +7,21 @@ const int servo1Offset = 90;  // Offset to align with 0 degrees
 const int servo2Offset = 90;  // Offset to align with 0 degrees
 const float stand_seat_speed = 1;
 
+const float X_STANDBY = 0;
+const float Y_STANDBY = 0.49585484722313566;
+const float Z_STANDBY = 8.180476404905836;
+// =============================================================
+//                      Use it only for angle
+// =============================================================
+
+volatile float angle_expect[4][3];
+volatile float angle_now[4][3];
+
+float angle_speed[4][3];
+// =============================================================
+//                      Use it only for angle
+// =============================================================
+
 const float a1 = 6;
 const float a2 = 8;
 
@@ -63,7 +78,7 @@ void calibrate(void) {
 void standby(void) {
   move_speed = stand_seat_speed;
   for (int leg = 0; leg < 4; leg++) {
-    set_point(leg, 0,  0.49585484722313566,  8.180476404905836);
+    set_point(leg, 0, 0.49585484722313566,  8.180476404905836);
   }
   wait_all_reach();
 }
@@ -77,124 +92,118 @@ void walk(void) {
 }
 
 // Fungsi untuk maju 1 langkah dengan 1 kaki (crawl gait)
+//void crawl_forward_step(int leg) {
+//  // 1. Angkat kaki
+//  set_point(leg, KEEP, 0.49585484722313566, point_now[leg][2] + 0.7);  // z naik (angkat)
+//  wait_reach(leg);
+//
+//  // 2. Majuin kaki
+//  set_point(leg, point_now[leg][0] - 0.28, KEEP, KEEP);  // x maju
+//  wait_reach(leg);
+//
+//  // 3. Turunkan kaki
+//  set_point(leg, KEEP, KEEP, point_now[leg][2] - 0.7);  // z turun (taruh)
+//  wait_reach(leg);
+//
+//  // 4. Geser badan (kaki lain ikut mundur sedikit biar badan maju)
+//  for (int i = 0; i < 4; i++) {
+//    if (i != leg) {  // hanya geser kaki lain
+//      set_point(i, point_now[i][0] + 0.07, KEEP, KEEP);
+//    }
+//  }
+//  wait_all_reach();
+//}
+
 void crawl_forward_step(int leg) {
-  // 1. Angkat kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);  // z naik (angkat)
+  // 1. Angkat
+  set_point(leg, KEEP, Y_STANDBY, Z_STANDBY + 0.7);
   wait_reach(leg);
 
-  // 2. Majuin kaki
-  set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);  // x maju
+  // 2. Maju relatif dari standby
+  set_point(leg, X_STANDBY - 0.36, KEEP, KEEP);
   wait_reach(leg);
 
-  // 3. Turunkan kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);  // z turun (taruh)
+  // 3. Turun
+  set_point(leg, KEEP, KEEP, Z_STANDBY);
   wait_reach(leg);
 
-  // 4. Geser badan (kaki lain ikut mundur sedikit biar badan maju)
+  // 4. Geser kaki lain
   for (int i = 0; i < 4; i++) {
-    if (i != leg) {  // hanya geser kaki lain
-      set_point(i, point_now[i][0] + 1, KEEP, KEEP);
+    if (i != leg) {
+      set_point(i, X_STANDBY + 0.12, KEEP, KEEP);
     }
   }
   wait_all_reach();
 }
 
 void crawl_backward_step(int leg) {
-  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
+  // 1. Angkat
+  set_point(leg, KEEP, Y_STANDBY, Z_STANDBY + 0.7);
   wait_reach(leg);
 
-  set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
+  // 2. Maju relatif dari standby
+  set_point(leg, X_STANDBY + 0.36, KEEP, KEEP);
   wait_reach(leg);
 
-  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
+  // 3. Turun
+  set_point(leg, KEEP, KEEP, Z_STANDBY);
   wait_reach(leg);
 
+  // 4. Geser kaki lain
   for (int i = 0; i < 4; i++) {
     if (i != leg) {
-      set_point(i, point_now[i][0] - 1, KEEP, KEEP);
+      set_point(i, X_STANDBY - 0.12, KEEP, KEEP);
     }
   }
   wait_all_reach();
 }
 
+//void crawl_backward_step(int leg) {
+//  set_point(leg, KEEP, 0.49585484722313566, point_now[leg][2] + 0.7);
+//  wait_reach(leg);
+//
+//  set_point(leg, point_now[leg][0] + 0.28 , KEEP, KEEP);
+//  wait_reach(leg);
+//
+//  set_point(leg, KEEP, KEEP, point_now[leg][2] - 0.7);
+//  wait_reach(leg);
+//
+//  for (int i = 0; i < 4; i++) {
+//    if (i != leg) {
+//      set_point(i, point_now[i][0] - 0.07, KEEP, KEEP);
+//    }
+//  }
+//  wait_all_reach();
+//}
+
 void crawl_yaw_left_step(int leg) {
-  // 1. Angkat kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
-  wait_reach(leg);
-
-  // 2. Geser kaki untuk rotasi ke kiri
-  if (leg == 0 || leg == 2) {
-    // kaki kiri (depan kiri & belakang kiri) mundur
-    set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);
-  } else {
-    // kaki kanan (depan kanan & belakang kanan) maju
-    set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
-  }
-  wait_reach(leg);
-
-  // 3. Turunkan kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
-  wait_reach(leg);
-
-  // 4. Kaki lain ikut geser sedikit biar badan muter
-  for (int i = 0; i < 4; i++) {
-    if (i != leg) {
-      if (i == 0 || i == 2) {
-        set_point(i, point_now[i][0] + 1, KEEP, KEEP);
-      } else {
-        set_point(i, point_now[i][0] - 1, KEEP, KEEP);
-      }
-    }
-  }
-  wait_all_reach();
 }
 
 void crawl_yaw_right_step(int leg) {
-  // 1. Angkat kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] + 3);
-  wait_reach(leg);
-
-  // 2. Geser kaki untuk rotasi ke kanan
-  if (leg == 0 || leg == 2) {
-    // kaki kiri (depan kiri & belakang kiri) maju
-    set_point(leg, point_now[leg][0] + 3, KEEP, KEEP);
-  } else {
-    // kaki kanan (depan kanan & belakang kanan) mundur
-    set_point(leg, point_now[leg][0] - 3, KEEP, KEEP);
-  }
-  wait_reach(leg);
-
-  // 3. Turunkan kaki
-  set_point(leg, KEEP, KEEP, point_now[leg][2] - 3);
-  wait_reach(leg);
-
-  // 4. Kaki lain ikut geser sedikit biar badan muter
-  for (int i = 0; i < 4; i++) {
-    if (i != leg) {
-      if (i == 0 || i == 2) {
-        set_point(i, point_now[i][0] - 1, KEEP, KEEP);
-      } else {
-        set_point(i, point_now[i][0] + 1, KEEP, KEEP);
-      }
-    }
-  }
-  wait_all_reach();
 }
 
 
 // Fungsi untuk jalan maju terus
-void crawl_forward() {
+void crawl_forward() {  
   crawl_forward_step(0);  // depan kiri
+  delay(50);
   crawl_forward_step(2);  // belakang kanan
+  delay(50);
   crawl_forward_step(1);  // depan kanan
+  delay(50);
   crawl_forward_step(3);  // belakang kiri
+  delay(50);
 }
 
 void crawl_backward() {
   crawl_backward_step(0);
+  delay(50);
   crawl_backward_step(1);
+  delay(50);
   crawl_backward_step(2);
+  delay(50);
   crawl_backward_step(3);
+  delay(50);
 }
 
 
@@ -235,6 +244,56 @@ void stage2() {
     crawl_yaw_right();
   }
 }
+
+// =============================================================
+//                      Use it only for angle
+// =============================================================
+
+void servo_service_angle(void) {
+  sei();
+
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (abs(angle_now[i][j] - angle_expect[i][j]) >= abs(angle_speed[i][j])) {
+        angle_now[i][j] += angle_speed[i][j];
+      }
+      else {
+        angle_now[i][j] = angle_expect[i][j];
+      }
+    }
+    servo_write(i, angle_now[i][0], angle_now[i][1], angle_now[i][2]);
+  }
+
+  rest_counter++;
+}
+
+void set_servo_angle(int leg, float alpha, float beta, float gamma) {
+  angle_expect[leg][0] = alpha;
+  angle_expect[leg][1] = beta;
+  angle_expect[leg][2] = gamma;
+
+  float distance[3];
+  distance[0] = alpha - angle_now[leg][0];
+  distance[1] = beta - angle_now[leg][1];
+  distance[2] = gamma - angle_now[leg][2];
+
+  float max_distance = max(abs(distance[0]), max(abs(distance[1]), abs(distance[2])));
+
+  if (max_distance < 0.1) {  // If movement is too small
+    angle_speed[leg][0] = 0;
+    angle_speed[leg][1] = 0;
+    angle_speed[leg][2] = 0;
+  } else {
+    // Calculate proportional speed for synchronized movement
+    angle_speed[leg][0] = (distance[0] / max_distance) * move_speed * speed_multiple;
+    angle_speed[leg][1] = (distance[1] / max_distance) * move_speed * speed_multiple;
+    angle_speed[leg][2] = (distance[2] / max_distance) * move_speed * speed_multiple;
+  }
+
+}
+// =============================================================
+//                      Use it only for angle
+// =============================================================
 
 void servo_service(void) {
   sei();
@@ -281,6 +340,18 @@ void inverse_kinematic(volatile float &alpha, volatile float &beta, volatile flo
   float gamma2 = atan2(z, y) * (180 / PI);
   beta = gamma2 - beta2;
 }
+
+//void wait_reach_angle(int leg) {
+//  while (1) {
+//    // ❌ Floating point comparison - hampir tidak pernah exact match!
+//    if (abs(angle_now[leg][0] - angle_expect[leg][0]) < 1.0 &&
+//        abs(angle_now[leg][1] - angle_expect[leg][1]) < 1.0 &&
+//        abs(angle_now[leg][2] - angle_expect[leg][2]) < 1.0) {
+//      break;
+//    }
+//    delay(10);
+//  }
+//}
 
 void wait_reach(int leg) {
   while (1) {
@@ -392,7 +463,7 @@ void loop() {
   calibrate();
   delay(2000);
   standby();
-  delay(2000);
+  delay(1000);
   stage1();
   delay(4000);
   //  walk();
