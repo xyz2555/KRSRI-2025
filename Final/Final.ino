@@ -595,7 +595,9 @@ void sidewalk_left_main(){
 }
 
 void sidewalk_right_main(){
-
+  for (int i = 0; i < 10; i++) {
+    crab_sidewalk_right();
+  }
 }
 
 // ============================================================================
