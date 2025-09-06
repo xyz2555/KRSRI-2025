@@ -1,4 +1,4 @@
-#include <FlexiTimer2.h>
+  #include <FlexiTimer2.h>
 #include <Servo.h>
 
 // ============================================================================
@@ -477,7 +477,7 @@ void yaw_right() {
   set_point(3, X_STANDBY - 0.36, Y_STANDBY - 0.18, Z_STANDBY + 2);
   wait_all_reach();
 
-  // Turunkan kaki
+                    // Turunkan kaki
   set_point(1, X_STANDBY - 0.36, Y_STANDBY - 0.18, Z_STANDBY);
   set_point(3, X_STANDBY - 0.36, Y_STANDBY - 0.18, Z_STANDBY);
   wait_all_reach();
@@ -488,6 +488,77 @@ void yaw_right() {
   set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
   set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
   wait_all_reach();
+}
+
+void crab_sidewalk_left(){
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+
+  set_point(2, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  set_point(0, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  wait_all_reach();
+
+  set_point(2, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  set_point(0, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  wait_all_reach();
+
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY);
+
+  // Angkat kaki depan kanan dan belakang kiri
+  set_point(1, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(3, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+  
+  set_point(1, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  set_point(3, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  wait_all_reach();
+
+  set_point(1, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  set_point(3, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  wait_all_reach();
+
+  // Kembalikan ke posisi standby dan persiapan untuk siklus berikutnya
+  set_point(1, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(3, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+}
+
+void forward_main(){
+  for (int i = 0; i < 10; i++) {
+    crawl_forward();
+  }
+}
+
+void backward_main(){
+  for (int i = 0; i < 10; i++) {
+    crawl_backward();
+  }
+}
+
+void yaw_left_main(){
+  for (int i = 0; i < 10; i++) {
+    yaw_left();
+  }
+}
+
+void yaw_right_main(){
+  for (int i = 0; i < 10; i++) {
+    yaw_right();
+  }
+}
+
+void sidewalk_left_main(){
+  for (int i = 0; i < 10; i++) {
+    crab_sidewalk_left();
+  }
+}
+
+void sidewalk_right_main(){
+
 }
 
 // ============================================================================
@@ -579,21 +650,8 @@ void loop() {
   standby();
   delay(1000);
 
-  // Jalankan stage 1 (gerakan maju)
-  stage1();
+  sidewalk_left_main();
   delay(2000);
-
-  // Jalankan stage 2 (rotasi kiri)
-  stage2();
-  delay(1000);
-
-  // Jalankan stage 1 lagi (gerakan maju)
-  stage1();
-  delay(1000);
-
-  // Jalankan stage 3 (gerakan mundur)
-  stage3();
-  delay(1000);
 
   Serial.println("Siklus selesai, mengulang...\n");
 }
