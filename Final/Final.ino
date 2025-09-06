@@ -495,6 +495,43 @@ void crab_sidewalk_left(){
   set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
   wait_all_reach();
 
+  set_point(2, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  set_point(0, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  wait_all_reach();
+
+  set_point(2, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  set_point(0, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  wait_all_reach();
+
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY);
+
+  // Angkat kaki depan kanan dan belakang kiri
+  set_point(1, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(3, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+  
+  set_point(1, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  set_point(3, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
+  wait_all_reach();
+
+  set_point(1, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  set_point(3, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY);
+  wait_all_reach();
+
+  // Kembalikan ke posisi standby dan persiapan untuk siklus berikutnya
+  set_point(1, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(3, X_STANDBY, Y_STANDBY, Z_STANDBY);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+}
+
+void crab_sidewalk_right(){
+  set_point(2, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  set_point(0, X_STANDBY, Y_STANDBY, Z_STANDBY + 2);
+  wait_all_reach();
+
   set_point(2, X_STANDBY - 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
   set_point(0, X_STANDBY + 0.36, Y_STANDBY + 0.18, Z_STANDBY + 2);
   wait_all_reach();
